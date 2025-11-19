@@ -1,9 +1,6 @@
-create database CarRepairSystem;
-use CarRepairSystem;
-
 create table Customers (CustomerID int primary key, FirstName varchar(50), LastName varchar(50), PhoneNumber varchar(50), Email varchar(50));
 create table Orders(OrderID int primary key, CustomerID int, OrderDate date, FinishDate date, ServiceID int, CarID int);
-create table Cars(CarID int primary key, Brand varchar(50), Model varchar(50), GarageID int, ManufactureDate date);
+create table Cars(CarID int primary key, Brand varchar(50), Model varchar(50), Price decimal(20, 2), GarageID int, ManufactureDate date, Status varchar(50));
 create table Services(ServiceID int primary key, ServiceName varchar(50), Cost decimal(10, 2), CreationDate date);
 create table Workers(WorkerID int primary key, WorkerName varchar(50), Salary decimal(10, 2), ServiceID int, EmploymentDate date, Experience text);
 create table Garages(GarageID int primary key, BuildingID int, RoomNumber int, Capacity int);
@@ -44,12 +41,12 @@ values
 (3, 'Murad', 'Aliyev', '+994707778899', 'murad.aliyev@example.com'),
 (4, 'Aynur', 'Rzayeva', '+994553332211', 'aynur.rzayeva@example.com');
 
-insert into Cars (CarID, Brand, Model, GarageID, ManufactureDate)
+insert into Cars (CarID, Brand, Model, Price, GarageID, ManufactureDate, Status)
 values
-(1, 'Toyota', 'Corolla', 1, '2018-03-12'),
-(2, 'BMW', 'X5', 2, '2020-07-25'),
-(3, 'Mercedes', 'C200', 3, '2019-01-10'),
-(4, 'Hyundai', 'Elantra', 1, '2021-11-15');
+(1, 'Toyota', 'Corolla', 59000, 1, '2018-03-12', 'Inactive'),
+(2, 'BMW', 'X5', 12000, 2, '2020-07-25', 'Discontinued'),
+(3, 'Mercedes', 'C200', 80000, 3, '2019-01-10', 'Workinng'),
+(4, 'Hyundai', 'Elantra', 20000, 1, '2021-11-15', 'Discontinued');
 
 insert into Workers (WorkerID, WorkerName, Salary, ServiceID, EmploymentDate, Experience)
 values
